@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="es.ieslosmontecillos.PersonaDetalleViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.PersonaDetalleViewController">
+   <children>
+      <GridPane prefHeight="400.0" prefWidth="600.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="265.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="135.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="Nombre" text="Nombre" />
+            <Label fx:id="Apellidos" text="Apellidos" GridPane.rowIndex="1" />
+            <Label fx:id="Telefono" text="Telefono" GridPane.rowIndex="2" />
+            <Label fx:id="eMail" text="eMail" GridPane.rowIndex="3" />
+            <Label fx:id="FechaNacimiento" text="Fecha Nacimiento" GridPane.rowIndex="4" />
+            <Label fx:id="NumHijos" text="Num Hijos" GridPane.rowIndex="5" />
+            <Label fx:id="EstadoCivil" text="Estado Civil" GridPane.rowIndex="6" />
+            <Label fx:id="Salario" text="Salario" GridPane.rowIndex="7" />
+            <Label fx:id="Jubilacion" text="Jubilacion" GridPane.rowIndex="8" />
+            <Label fx:id="Provincia" text="Provincia" GridPane.rowIndex="9" />
+            <TextField GridPane.columnIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <children>
+                  <RadioButton fx:id="Soltero" mnemonicParsing="false" text="Soltero/a" />
+                  <RadioButton fx:id="Casado" mnemonicParsing="false" text="Casado/a" />
+                  <RadioButton fx:id="Viudo" mnemonicParsing="false" text="Viudo/a" />
+               </children>
+            </HBox>
+            <CheckBox mnemonicParsing="false" text="Jubilado" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="Foto" text="Foto" GridPane.rowIndex="10" />
+            <Button fx:id="Guardar" mnemonicParsing="false" text="Guardar" GridPane.columnIndex="2" />
+            <Button fx:id="Cancelar" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <HBox layoutX="104.0" layoutY="373.0" prefHeight="150.0" prefWidth="265.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="Examinar" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Examinar" />
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
