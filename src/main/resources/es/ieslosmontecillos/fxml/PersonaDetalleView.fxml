@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.PersonaDetalleViewController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
@@ -47,30 +46,30 @@
             <Label fx:id="Salario" text="Salario" GridPane.rowIndex="7" />
             <Label fx:id="Jubilacion" text="Jubilacion" GridPane.rowIndex="8" />
             <Label fx:id="Provincia" text="Provincia" GridPane.rowIndex="9" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="TextFieldNombre" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldNumHijos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldSalario" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <DatePicker fx:id="datePickerFechaNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <RadioButton fx:id="Soltero" mnemonicParsing="false" text="Soltero/a" />
-                  <RadioButton fx:id="Casado" mnemonicParsing="false" text="Casado/a" />
-                  <RadioButton fx:id="Viudo" mnemonicParsing="false" text="Viudo/a" />
+                  <RadioButton fx:id="radioButtonSoltero" mnemonicParsing="false" text="Soltero/a" />
+                  <RadioButton fx:id="radioButtonCasado" mnemonicParsing="false" text="Casado/a" />
+                  <RadioButton fx:id="radioButtonViudo" mnemonicParsing="false" text="Viudo/a" />
                </children>
             </HBox>
-            <CheckBox mnemonicParsing="false" text="Jubilado" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <CheckBox fx:id="checkBoxJubilado" mnemonicParsing="false" text="Jubilado" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ComboBox fx:id="comboBoxProvincia" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label fx:id="Foto" text="Foto" GridPane.rowIndex="10" />
-            <Button fx:id="Guardar" mnemonicParsing="false" text="Guardar" GridPane.columnIndex="2" />
-            <Button fx:id="Cancelar" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="Guardar" mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Guardar" GridPane.columnIndex="2" />
+            <Button fx:id="Cancelar" mnemonicParsing="false" onAction="#onActionButtonCancelar" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="104.0" layoutY="373.0" prefHeight="150.0" prefWidth="265.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageViewFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="Examinar" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Examinar" />
          </children>
       </HBox>

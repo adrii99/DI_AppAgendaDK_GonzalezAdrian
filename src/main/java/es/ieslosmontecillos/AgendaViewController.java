@@ -5,10 +5,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,6 +43,14 @@ public  class AgendaViewController implements Initializable {
     private Button Guardar;
 
     private Persona personaSeleccionada;
+    @FXML
+    private Button Nuevo;
+    @FXML
+    private Button Editar;
+    @FXML
+    private Button Suprimir;
+    @FXML
+    private AnchorPane rootAgendaView;
 
 
     public void setDataUtil(DataUtil dataUtil){
@@ -102,5 +115,31 @@ public  class AgendaViewController implements Initializable {
             tableViewAgenda.requestFocus();
 
         }
+    }
+
+    @FXML
+    public void onActionButtonNuevo(ActionEvent actionEvent) {
+
+        try{
+            // Cargar la vista de detalle
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("fxml/PersonaDetalleView.fxml"));
+            Parent rootDetalleView=fxmlLoader.load();
+            // Ocultar la vista de la lista
+            rootAgendaView.setVisible(false);
+            //Añadir la vista detalle al StackPane principal para que se muestre
+            StackPane rootMain =
+                    (StackPane) rootAgendaView.getScene().getRoot();
+            rootMain.getChildren().add(rootDetalleView);
+        } catch (IOException ex){
+            System.out.println("Error volcado"+ex);}
+    }
+
+    @FXML
+    public void onActionButtonEditar(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onActionButtonSuprimir(ActionEvent actionEvent) {
     }
 }
