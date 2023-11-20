@@ -15,6 +15,8 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public  class AgendaViewController implements Initializable {
@@ -93,6 +95,18 @@ public  class AgendaViewController implements Initializable {
                         textFieldApellidos.setText("");
                     }
                 });
+
+        if (personaSeleccionada != null){
+            personaSeleccionada.setNombre(textFieldNombre.getText());
+            personaSeleccionada.setApellidos(textFieldApellidos.getText());
+            dataUtil.actualizarPersona(personaSeleccionada);
+            int numFilaSeleccionada = tableViewAgenda.getSelectionModel().getSelectedIndex();
+            tableViewAgenda.getItems().set(numFilaSeleccionada,personaSeleccionada);
+            TablePosition pos = new
+                    TablePosition(tableViewAgenda,numFilaSeleccionada,null);
+            tableViewAgenda.getFocusModel().focus(pos);
+            tableViewAgenda.requestFocus();
+        }
     }
 
     @FXML
@@ -131,15 +145,71 @@ public  class AgendaViewController implements Initializable {
             StackPane rootMain =
                     (StackPane) rootAgendaView.getScene().getRoot();
             rootMain.getChildren().add(rootDetalleView);
+            PersonaDetalleViewController personaDetalleViewController =
+                    (PersonaDetalleViewController) fxmlLoader.getController();
+            personaDetalleViewController.setRootAgendaView(rootAgendaView);
+            //Intercambio de datos funcionales con el detalle
+            personaDetalleViewController.setTableViewPrevio(tableViewAgenda);
+            personaDetalleViewController.setDataUtil(dataUtil);
+            // Para el botón Nuevo:
+            personaSeleccionada = new Persona();
+            personaDetalleViewController.setPersona(personaSeleccionada,true);
+            personaDetalleViewController.mostrarDatos();
         } catch (IOException ex){
             System.out.println("Error volcado"+ex);}
     }
 
     @FXML
     public void onActionButtonEditar(ActionEvent actionEvent) {
+
+        try{
+            // Cargar la vista de detalle
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("fxml/PersonaDetalleView.fxml"));
+            Parent rootDetalleView=fxmlLoader.load();
+            // Ocultar la vista de la lista
+            rootAgendaView.setVisible(false);
+            //Añadir la vista detalle al StackPane principal para que se muestre
+            StackPane rootMain =
+                    (StackPane) rootAgendaView.getScene().getRoot();
+            rootMain.getChildren().add(rootDetalleView);
+            PersonaDetalleViewController personaDetalleViewController = (PersonaDetalleViewController) fxmlLoader.getController();
+            personaDetalleViewController.setRootAgendaView(rootAgendaView);
+            //Intercambio de datos funcionales con el detalle
+            personaDetalleViewController.setTableViewPrevio(tableViewAgenda);
+            personaDetalleViewController.setDataUtil(dataUtil);
+            /// Para el botón Editar
+            personaDetalleViewController.setPersona(personaSeleccionada,false);
+            personaDetalleViewController.mostrarDatos();
+        } catch (IOException | ParseException ex){
+            System.out.println("Error volcado"+ex);}
     }
 
     @FXML
     public void onActionButtonSuprimir(ActionEvent actionEvent) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmar");
+        alert.setHeaderText("¿Desea suprimir el siguiente registro?");
+        alert.setContentText(personaSeleccionada.getNombre() + " " + personaSeleccionada.getApellidos());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // Acciones a realizar si el usuario acepta
+            dataUtil.eliminarPersona(personaSeleccionada);
+            tableViewAgenda.getItems().remove(personaSeleccionada);
+            tableViewAgenda.getFocusModel().focus(null);
+            tableViewAgenda.requestFocus();
+
+        } else {
+            // Acciones a realizar si el usuario cancela
+            int numFilaSeleccionada=
+                    tableViewAgenda.getSelectionModel().getSelectedIndex();
+            tableViewAgenda.getItems().set(numFilaSeleccionada,personaSeleccionada);
+            TablePosition pos = new TablePosition(tableViewAgenda,
+                    numFilaSeleccionada,null);
+            tableViewAgenda.getFocusModel().focus(pos);
+            tableViewAgenda.requestFocus();
+        }
+
     }
 }
