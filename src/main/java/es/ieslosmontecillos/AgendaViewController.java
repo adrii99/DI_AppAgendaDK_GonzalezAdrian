@@ -155,7 +155,7 @@ public  class AgendaViewController implements Initializable {
             personaSeleccionada = new Persona();
             personaDetalleViewController.setPersona(personaSeleccionada,true);
             personaDetalleViewController.mostrarDatos();
-        } catch (IOException ex){
+        } catch (IOException | ParseException ex){
             System.out.println("Error volcado"+ex);}
     }
 
