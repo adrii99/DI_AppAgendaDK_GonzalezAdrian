@@ -114,6 +114,7 @@
                     <children>
                         <ImageView fx:id="imageViewFoto" fitHeight="52.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActionButtonExaminar" text="Examinar" />
+                  <Button contentDisplay="CENTER" layoutX="200.0" layoutY="24.0" mnemonicParsing="false" onAction="#onActionSuprimirFoto" text="Suprimit" />
                     </children>
                 </HBox>
                 <ComboBox fx:id="comboBoxProvincia" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />

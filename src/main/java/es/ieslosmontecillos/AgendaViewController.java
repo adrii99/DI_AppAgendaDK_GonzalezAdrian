@@ -145,16 +145,22 @@ public  class AgendaViewController implements Initializable {
             StackPane rootMain =
                     (StackPane) rootAgendaView.getScene().getRoot();
             rootMain.getChildren().add(rootDetalleView);
+
             PersonaDetalleViewController personaDetalleViewController =
                     (PersonaDetalleViewController) fxmlLoader.getController();
             personaDetalleViewController.setRootAgendaView(rootAgendaView);
+
             //Intercambio de datos funcionales con el detalle
             personaDetalleViewController.setTableViewPrevio(tableViewAgenda);
             personaDetalleViewController.setDataUtil(dataUtil);
+
             // Para el botón Nuevo:
             personaSeleccionada = new Persona();
             personaDetalleViewController.setPersona(personaSeleccionada,true);
+
+            //Mostrar datos actuales del objeto
             personaDetalleViewController.mostrarDatos();
+
         } catch (IOException | ParseException ex){
             System.out.println("Error volcado"+ex);}
     }
@@ -173,14 +179,20 @@ public  class AgendaViewController implements Initializable {
             StackPane rootMain =
                     (StackPane) rootAgendaView.getScene().getRoot();
             rootMain.getChildren().add(rootDetalleView);
+
             PersonaDetalleViewController personaDetalleViewController = (PersonaDetalleViewController) fxmlLoader.getController();
             personaDetalleViewController.setRootAgendaView(rootAgendaView);
+
             //Intercambio de datos funcionales con el detalle
             personaDetalleViewController.setTableViewPrevio(tableViewAgenda);
             personaDetalleViewController.setDataUtil(dataUtil);
+
             /// Para el botón Editar
             personaDetalleViewController.setPersona(personaSeleccionada,false);
+
+            //Mostrar datos actuales del objeto
             personaDetalleViewController.mostrarDatos();
+            
         } catch (IOException | ParseException ex){
             System.out.println("Error volcado"+ex);}
     }

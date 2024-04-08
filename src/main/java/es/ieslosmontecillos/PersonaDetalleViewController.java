@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.Optional;
 
 public class PersonaDetalleViewController {
     @FXML
@@ -237,12 +238,15 @@ public class PersonaDetalleViewController {
                 persona.setApellidos(textFieldApellidos.getText());
                 persona.setTelefono(textFieldTelefono.getText());
                 persona.setEmail(textFieldEmail.getText());
+
                 if (nuevaPersona) {
                     dataUtil.addPersona(persona);
                 } else {
                     dataUtil.actualizarPersona(persona);
                 }
+
                 int numFilaSeleccionada;
+                
                 if (nuevaPersona) {
                     tableViewPrevio.getItems().add(persona);
                     numFilaSeleccionada = tableViewPrevio.getItems().size() - 1;
@@ -282,7 +286,6 @@ public class PersonaDetalleViewController {
         tableViewPrevio.requestFocus();
     }
 
-
     @FXML
     @Deprecated
     private void onActionButtonExaminar(ActionEvent event){
@@ -314,6 +317,33 @@ public class PersonaDetalleViewController {
         }
     }
 
+    public void onActionSuprimirFoto(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmar supresión de imagen");
+        alert.setHeaderText("¿Desea SUPRIMIR el archivo asociado a la imagen,\n"+
+                "quitar la foto pero MANTENER el archivo, \no CANCELAR la operación?");
+        alert.setContentText("Elija la opción deseada:");
+        ButtonType buttonTypeEliminar = new ButtonType("Suprimir");
+        ButtonType buttonTypeMantener = new ButtonType("Mantener");
+        ButtonType buttonTypeCancel = new ButtonType("Cancelar",
+                ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeEliminar, buttonTypeMantener,
+                buttonTypeCancel);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeEliminar){
+            String imageFileName = persona.getFoto();
+            File file = new File(CARPETA_FOTOS + "/" + imageFileName);
+            if (file.exists()) {
+                file.delete();
+            }
+            persona.setFoto(null);
+            imageViewFoto.setImage(null);
+        } else if (result.get() == buttonTypeMantener) {
+            persona.setFoto(null);
+            imageViewFoto.setImage(null);
+        }
+    }
+
     @FXML
     public void initialize() {
     }
@@ -333,5 +363,6 @@ public class PersonaDetalleViewController {
     public DataUtil getDataUtil() {
         return dataUtil;
     }
+
 
 }
