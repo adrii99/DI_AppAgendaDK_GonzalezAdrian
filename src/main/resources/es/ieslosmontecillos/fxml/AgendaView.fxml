@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="rootAgendaView" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.AgendaViewController">
+<AnchorPane id="AnchorPane" fx:id="rootAgendaView" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.AgendaViewController">
    <children>
       <VBox prefHeight="419.0" prefWidth="600.0" spacing="20.0">
          <children>
@@ -29,7 +29,10 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="Suprimir" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonSuprimir" text="Suprimir" />
+                  <Button fx:id="Suprimir" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionButtonSuprimir" text="Suprimir">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <TableView fx:id="tableViewAgenda" prefHeight="308.0" prefWidth="141.0">
@@ -40,7 +43,7 @@
                   <TableColumn fx:id="columnProvincia" prefWidth="75.0" text="Provincia" />
               </columns>
             </TableView>
-            <GridPane hgap="10.0" vgap="10.0">
+            <GridPane hgap="10.0" prefHeight="65.0" prefWidth="580.0" vgap="10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="54.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="476.0" minWidth="10.0" prefWidth="476.0" />
@@ -53,9 +56,18 @@
                <children>
                   <Label fx:id="Nombre" text="Nombre" />
                   <Label fx:id="Apellidos" text="Apellidos" GridPane.rowIndex="1" />
-                  <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="338.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="Guardar" mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Guardar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="338.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </GridPane.margin></TextField>
+                  <Button fx:id="Guardar" mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Guardar" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin></Button>
                </children>
                <VBox.margin>
                   <Insets />

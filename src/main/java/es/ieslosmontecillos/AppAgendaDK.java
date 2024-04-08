@@ -42,7 +42,7 @@ public class AppAgendaDK extends Application {
         inicioController.setOlPers(olPers);
         inicioController.setRootMain(rootMain);
 
-        Scene scene = new Scene(rootMain,650,400);
+        Scene scene = new Scene(rootMain,650,450);
         primaryStage.setTitle("App Agenda");
         primaryStage.setScene(scene);
         primaryStage.show();

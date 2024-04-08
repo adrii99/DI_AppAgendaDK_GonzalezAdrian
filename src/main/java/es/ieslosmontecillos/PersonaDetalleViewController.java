@@ -162,7 +162,7 @@ public class PersonaDetalleViewController {
     }
 
 
-    @FXML
+    @Deprecated
     public void onActionButtonGuardar(ActionEvent event) {
 
         boolean errorFormato = false;
@@ -267,6 +267,7 @@ public class PersonaDetalleViewController {
 
     }
 
+
     @FXML
     @Deprecated
     private void onActionButtonCancelar(ActionEvent event) {
@@ -283,6 +284,7 @@ public class PersonaDetalleViewController {
 
 
     @FXML
+    @Deprecated
     private void onActionButtonExaminar(ActionEvent event){
         File carpetaFotos = new File(CARPETA_FOTOS);
         if (!carpetaFotos.exists()){

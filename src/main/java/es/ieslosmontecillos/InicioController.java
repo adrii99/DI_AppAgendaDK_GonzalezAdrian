@@ -33,7 +33,7 @@ public class InicioController {
         this.olPers = olPers;
     }
 
-    @FXML
+    @Deprecated
     public void iniciaApp(Event event) {
         try{
             FXMLLoader fxmlLoader = new

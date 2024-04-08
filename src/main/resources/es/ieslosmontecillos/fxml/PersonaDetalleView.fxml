@@ -16,10 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="rootPersonaDetalleView" prefHeight="758.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.PersonaDetalleViewController">
+<AnchorPane fx:id="rootPersonaDetalleView" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ieslosmontecillos.PersonaDetalleViewController">
     <children>
-        <GridPane hgap="10.0" prefHeight="758.0" prefWidth="900.0" vgap="10.0">
+        <GridPane hgap="10.0" prefHeight="450.0" prefWidth="650.0" vgap="10.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="212.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="429.0" />
@@ -95,7 +94,7 @@
                     </font>
                 </Label>
                 <Button mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Guardar" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-                <Button onAction="#onActionButtonCancelar" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" onAction="#onActionButtonCancelar" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                 <TextField fx:id="textFieldNombre" GridPane.columnIndex="1" />
                 <TextField fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="textFieldTelefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -114,7 +113,7 @@
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                     <children>
                         <ImageView fx:id="imageViewFoto" fitHeight="52.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" text="Examinar" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActionButtonExaminar" text="Examinar" />
                     </children>
                 </HBox>
                 <ComboBox fx:id="comboBoxProvincia" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
@@ -125,4 +124,3 @@
         </GridPane>
     </children>
 </AnchorPane>
-
