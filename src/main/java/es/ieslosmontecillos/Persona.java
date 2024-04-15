@@ -10,11 +10,10 @@ public class Persona {
     private final ObjectProperty provincia = new SimpleObjectProperty();
     private final StringProperty telefono = new SimpleStringProperty();
     private final StringProperty email = new SimpleStringProperty();
-    private StringProperty fechaNacimiento = new SimpleStringProperty();
-    private final IntegerProperty numHijos = new SimpleIntegerProperty();
+    private final StringProperty fecha_nacimiento = new SimpleStringProperty();
+    private final IntegerProperty num_hijos = new SimpleIntegerProperty();
     private final DoubleProperty salario = new SimpleDoubleProperty();
-
-    private final StringProperty estadoCivil = new SimpleStringProperty();
+    private final StringProperty estado_civil = new SimpleStringProperty();
     private final IntegerProperty jubilado = new SimpleIntegerProperty();
     private final StringProperty foto = new SimpleStringProperty();
     //campo id
@@ -85,44 +84,44 @@ public class Persona {
         this.provincia.set(provincia);
     }
     //campo Fecha Nacimiento
-    @XmlElement(name = "fechaNacimiento")
-    public String getFechaNacimiento() {
-        return fechaNacimiento.get();
+    @XmlElement(name = "fecha_nacimiento")
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento.get();
     }
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento.set(fechaNacimiento);
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento.set(fecha_nacimiento);
     }
-    public StringProperty fechaNacimientoProperty() {
-        return fechaNacimiento;
+    public StringProperty fecha_nacimientoProperty() {
+        return fecha_nacimiento;
     }
     //campo Num Hijos
-    @XmlElement(name = "numHijos")
-    public Integer getNumHijos() {
+    @XmlElement(name = "num_hijos")
+    public Integer getNum_hijos() {
         Integer numeroHijos;
-        numeroHijos = this.numHijos.getValue().intValue();
+        numeroHijos = this.num_hijos.getValue().intValue();
         return numeroHijos;
     }
-    public IntegerProperty numHijosProperty() {
-        return numHijos;
+    public IntegerProperty num_hijosProperty() {
+        return num_hijos;
     }
-    public void setNumHijos(Integer numHijos) {
-        if (numHijos != null) {
-            this.numHijos.set(numHijos);
+    public void setNum_hijos(Integer num_hijos) {
+        if (num_hijos != null) {
+            this.num_hijos.set(num_hijos);
         } else {
-            this.numHijos.set(0);
+            this.num_hijos.set(0);
         }
     }
     //campo Estado Civil
-    @XmlElement(name = "estadoCivil")
-    public String getEstadoCivil() {
+    @XmlElement(name = "estado_civil")
+    public String getEstado_civil() {
 
-        return estadoCivil.get();
+        return estado_civil.get();
     }
-    public StringProperty estadoCivilProperty() {
-        return estadoCivil;
+    public StringProperty estado_civilProperty() {
+        return estado_civil;
     }
-    public void setEstadoCivil(String estadoCivil) {
-        this.estadoCivil.set(estadoCivil);
+    public void setEstado_civil(String estado_civil) {
+        this.estado_civil.set(estado_civil);
     }
     //campo Salario
     @XmlElement(name = "salario")

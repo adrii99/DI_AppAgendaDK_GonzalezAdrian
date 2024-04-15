@@ -84,6 +84,8 @@ public class DataUtil {
         JsonObject json = converter.writeToJson(persona);
         String dataBody = json.toString();
 
+        System.out.println(dataBody);
+
         RestClient restClient = RestClient.create()
                 .method("POST")
                 .host("http://localhost:8080")

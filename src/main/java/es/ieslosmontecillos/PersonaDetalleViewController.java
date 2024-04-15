@@ -83,8 +83,8 @@ public class PersonaDetalleViewController {
         textFieldApellidos.setText(persona.getApellidos());
         textFieldTelefono.setText(persona.getTelefono());
         textFieldEmail.setText(persona.getEmail());
-        if (persona.getNumHijos() != null) {
-            textFieldNumHijos.setText(persona.getNumHijos().toString());
+        if (persona.getNum_hijos() != null) {
+            textFieldNumHijos.setText(persona.getNum_hijos().toString());
         }
         if (persona.getSalario() != null) {
             textFieldSalario.setText(persona.getSalario().toString());
@@ -94,8 +94,8 @@ public class PersonaDetalleViewController {
         } else {
             checkBoxJubilado.setSelected(false);
         }
-        if (persona.getEstadoCivil() != null) {
-            switch (persona.getEstadoCivil()) {
+        if (persona.getEstado_civil() != null) {
+            switch (persona.getEstado_civil()) {
                 case "C":
                     radioButtonCasado.setSelected(true);
                     break;
@@ -107,9 +107,9 @@ public class PersonaDetalleViewController {
                     break;
             }
         }
-        if (persona.getFechaNacimiento() != null) {
+        if (persona.getFecha_nacimiento() != null) {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            Date fecNac = formato.parse(persona.getFechaNacimiento());
+            Date fecNac = formato.parse(persona.getFecha_nacimiento());
             LocalDate fechaNac =
                     fecNac.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             datePickerFechaNacimiento.setValue(fechaNac);
@@ -170,7 +170,7 @@ public class PersonaDetalleViewController {
 
         if (!textFieldNumHijos.getText().isEmpty()){
             try {
-                persona.setNumHijos(Integer.valueOf(textFieldNumHijos.getText()));
+                persona.setNum_hijos(Integer.valueOf(textFieldNumHijos.getText()));
             } catch(NumberFormatException ex){
                 errorFormato = true;
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Número de hijos no válido");
@@ -199,25 +199,27 @@ public class PersonaDetalleViewController {
         };
 
         if (radioButtonCasado.isSelected()){
-            persona.setEstadoCivil(String.valueOf(CASADO));
+            persona.setEstado_civil(String.valueOf(CASADO));
         } else if (radioButtonSoltero.isSelected()){
-            persona.setEstadoCivil(String.valueOf(SOLTERO));
+            persona.setEstado_civil(String.valueOf(SOLTERO));
         } else if (radioButtonViudo.isSelected()){
-            persona.setEstadoCivil(String.valueOf(VIUDO));
+            persona.setEstado_civil(String.valueOf(VIUDO));
         }
 
-        if (datePickerFechaNacimiento.getValue() != null){
+        if (datePickerFechaNacimiento.getValue() != null) {
             LocalDate localDate = datePickerFechaNacimiento.getValue();
-            ZonedDateTime zonedDateTime =
-                    localDate.atStartOfDay(ZoneId.systemDefault());
+            ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.systemDefault());
             Instant instant = zonedDateTime.toInstant();
             Date date = Date.from(instant);
+
+            // Ajusta el patrón del SimpleDateFormat
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaComoCadena = sdf.format(date);
-            persona.setFechaNacimiento(fechaComoCadena);
+            persona.setFecha_nacimiento(fechaComoCadena);
         } else {
-            persona.setFechaNacimiento(null);
+            persona.setFecha_nacimiento(null);
         }
+
 
         if (comboBoxProvincia.getValue() != null){
             persona.setProvincia(comboBoxProvincia.getValue());
