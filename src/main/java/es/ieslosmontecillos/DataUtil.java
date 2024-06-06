@@ -17,19 +17,12 @@ public class DataUtil {
 
     private ObservableList<Persona> olPersonas = FXCollections.observableArrayList();
 
-    //Añadimos observableList de usuario
-    private ObservableList<Usuario> olUsuario = FXCollections.observableArrayList();
-
-
     public ObservableList<Persona> getOlPersonas() {
         return olPersonas;
     }
     public ObservableList<Provincia> getOlProvincias() {
         return olProvincias;
     }
-
-    //Añadimos metodo get de olUsuario
-    public ObservableList<Usuario> getOlUsuario() {return olUsuario;}
 
     public void obtenerTodasProvincias(){
         System.out.println("Se están solicitando las provincias...");
@@ -75,28 +68,6 @@ public class DataUtil {
         });
     }
 
-    //Metodo para obtener todos los usuarios
-    public void obtenerTodasUsuarios(){
-
-        RestClient restClient = RestClient.create()
-                .method("GET")
-                .host("http://localhost:8080")
-                .path("/api/v1/USUARIO");
-        GluonObservableList<Usuario> usuarios =
-                DataProvider.retrieveList(restClient.createListDataReader(Usuario.class));
-        usuarios.addListener(new ListChangeListener<Usuario>() {
-            @Override
-            public void onChanged(javafx.collections.ListChangeListener.Change<?
-                    extends Usuario> c) {
-                if(c.next()){
-                    olUsuario.add(c.getList().get(c.getFrom()));
-                    System.out.println("Lista usuarios: " +
-                            olUsuario.get(c.getFrom()).getUsuario() + "-" +
-                            olUsuario.get(c.getFrom()).getContrasena());
-                }
-            }
-        });
-    }
 
     public void eliminarPersona(Persona persona){
         int idPersona = persona.getId().intValue();
@@ -178,22 +149,4 @@ public class DataUtil {
         return provincia.get();
     }
 
-    //Metodo que devuelve el usuario pasado como id
-    public Usuario findUsuarioByID(Integer id){
-        int idProvincia = id.intValue();
-        RestClient restClient = RestClient.create()
-                .method("GET")
-                .host("http://localhost:8080")
-                .path("/api/v1/PROVINCIA/"+idProvincia);
-        GluonObservableObject<Usuario> usuario =
-                DataProvider.retrieveObject(restClient.createObjectDataReader(Usuario.class)
-                );
-        usuario.initializedProperty().addListener((obs, ov, nv) -> {
-            if (nv && usuario.get() != null) {
-                System.out.println("Recuperando usuario seleccionado de la BD "
-                        +usuario.get().getUsuario()+" - "+usuario.get().getContrasena());
-            }
-        });
-        return usuario.get();
-    }
 }

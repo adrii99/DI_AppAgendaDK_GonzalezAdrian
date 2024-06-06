@@ -55,12 +55,6 @@ public  class AgendaViewController implements Initializable {
     private ObservableList<Provincia> olProvincias;
     private ObservableList<Persona> olPersonas;
 
-    //Lista observable de usuario
-    private ObservableList<Usuario> olUsuario;
-
-    //Metodo set de la lista observable del usuario
-    public void setOlUsuario(ObservableList<Usuario> olUsuario) {this.olUsuario = olUsuario;}
-
     public void setDataUtil(DataUtil dataUtil){
         this.dataUtil=dataUtil;
     }
